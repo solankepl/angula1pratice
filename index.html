@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myShoppingList">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <style>
+        .set-margine {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="set-margine" ng-controller="myCtrl">
+
+
+
+
+            <form class="form-inline">
+                <div class="form-group" ng-model="nameStudent">
+                    <label class="sr-only">Names:</label>
+                    <input type="text" class="form-control" ng-model="nameStudent">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Mark:</label>
+                    <input type="text" class="form-control" ng-model="markStudent">
+                </div>
+                <button class="btn btn-primary" ng-click="addItem()">Add</button>
+            </form>
+
+
+            <p>{{errortext}}</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th ng-click="orderByField='mark'; reverseSort = !reverseSort">
+                            Mark
+                            <span class="glyphicon glyphicon-triangle-bottom" ng-show="reverseSort"></span>
+                            <span class="glyphicon glyphicon-triangle-top" ng-show="!reverseSort"></span>
+                        </th>
+                        <th>Result</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="student in studentData |orderBy:orderByField:reverseSort">
+                        <td> {{student.name}}</td>
+                        <td> {{student.mark}}</td>
+                        <td> {{student.result}}</td>
+                        <td> <a href="#" ng-click="removeItem($index)"><span class="glyphicon glyphicon-trash" ></span></a></td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    var app = angular.module("myShoppingList", []);
+
+    app.service('StudentListService', function ($http) {
+        this.getContactsList = function () {
+            return $http.get('data.json');
+        };
+    });
+
+
+    app.controller("myCtrl", ['$scope', 'StudentListService', function ($scope, StudentListService) {
+        $scope.orderByField = 'mark';
+        $scope.reverseSort = false;
+
+        $scope.studentData;
+
+        StudentListService.getContactsList().success(function (data) {
+            $scope.studentData = data;
+            console.log(data);
+        });
+
+
+        $scope.addItem = function () {
+            var result = "fail"
+            if ($scope.markStudent > 35)
+                result = "pass"
+
+            $scope.newData = {
+                "name": $scope.nameStudent,
+                "mark": $scope.markStudent,
+                "result": result
+
+            };
+            $scope.studentData.push($scope.newData);
+        }
+        $scope.removeItem = function (x) {
+            $scope.errortext = "";
+            $scope.studentData.splice(x, 1);
+        }
+    }]);
+</script>
+
+</html>
