@@ -72,7 +72,7 @@
                                 </span>    
                             </td>
                             <td> 
-                                <span ng-show="!student.edit"> {{student.name}}{{student.mark | setDecimal:2}}  </span>
+                                <span ng-show="!student.edit">{{student.mark | setDecimal:2}}  </span>
                                 <span>
                                     <input  ng-if="student.edit" ng-model="student.mark" type="number">
                                 </span> 
