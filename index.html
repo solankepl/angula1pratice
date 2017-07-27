@@ -43,7 +43,8 @@
                 
                 <div class="set-margine-Top">
                     <label class="sr-only">Search:</label>
-                     <input class="form-control" placeholder="Search By Name"  type="text" search> 
+                    <input class="form-control" placeholder="Search By Name"  type="text" search> 
+                    <button class="btn btn-primary" ng-click="resteStudentData()">Reset</button>
                 </div>
                 
             </form>
@@ -131,9 +132,15 @@
             $scope.studentData.splice(x, 1);
         }
         
+         $scope.resteStudentData = function () {
+            $scope.getStudentData();  
+         }
+        
+        
+        
         $scope.search= function(val) {
             //$scope.studentData 
-            $scope.getStudentData();  
+            //$scope.getStudentData();  
             var searchObj = [];
             for(var i = 0; i < $scope.studentData.length; i++){
                 //console.log($scope.studentData.length);
