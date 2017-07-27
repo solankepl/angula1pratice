@@ -130,6 +130,12 @@
         }
         
         $scope.search= function(val) {
+            //$scope.studentData 
+            for(var i = 0; i < $scope.studentData.length; i++){
+              if($scope.studentData[i].name.indexOf(val) !== -1){
+                  console.log($scope.studentData.name);
+               }
+            }
             console.log("in");
         }
         
