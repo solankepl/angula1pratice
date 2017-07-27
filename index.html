@@ -68,7 +68,11 @@
                             <td> {{student.name}}</td>
                             <td> {{student.mark | setDecimal:2}}</td>
                             <td> {{student.result}}</td>
-                            <td> <a href="#" ng-click="removeStudent($index)"><span class="glyphicon glyphicon-trash" ></span></a></td>
+                            <td> 
+                                <a href="#" ng-click="removeStudent($index)"><span class="glyphicon glyphicon-trash" ></span></a>
+                                <a href="#" ng-click="removeStudent($index)"><span class="glyphicon glyphicon-pencil" ></span></a>
+                                
+                            </td>
 
                         </tr>
                     </tbody>
