@@ -131,16 +131,17 @@
         
         $scope.search= function(val) {
             //$scope.studentData 
+            var searchObj;
             for(var i = 0; i < $scope.studentData.length; i++){
                 //console.log($scope.studentData.length);
                 var nameSearch = $scope.studentData[i].name.toLowerCase();
                 var searchVal = val.toLowerCase()
-                //console.log( searchVal + "====" + nameSearch +" ======="+ nameSearch.indexOf(searchVal));
-                
+                //console.log( searchVal + "====" + nameSearch +" ======="+ nameSearch.indexOf(searchVal));                
                 // console.log( searchVal + "====" + nameSearch +" ======="+ nameSearch.includes(searchVal));
                 
                if(nameSearch.indexOf(searchVal) !== -1){
-                  console.log($scope.studentData[i].name);
+                   searchObj.push($scope.studentData[i]);
+                  console.log(searchObj);
                }
             }
             
