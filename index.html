@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label class="sr-only">Mark:</label>
-                    <input type="text" class="form-control" ng-model="markStudent">
+                    <input type="number" class="form-control" ng-model="markStudent">
                 </div>
                 <button class="btn btn-primary" ng-click="addStudent()">Add</button>
                 
@@ -66,7 +66,7 @@
                     <tbody>
                         <tr ng-repeat="student in studentData |orderBy:orderByField:reverseSort">
                             <td> {{student.name}}</td>
-                            <td> {{student.mark}}</td>
+                            <td> {{student.mark | setDecimal:2}}</td>
                             <td> {{student.result}}</td>
                             <td> <a href="#" ng-click="removeStudent($index)"><span class="glyphicon glyphicon-trash" ></span></a></td>
 
@@ -97,8 +97,14 @@
             });
         };
     });
-
-  
+    
+    app.filter('setDecimal', function ($filter) {
+        return function (input, val) {
+            if (isNaN(input)) return input;
+            var addDigit =  val;
+            return input.toFixed(addDigit);            
+        };
+    });
        
     app.controller("myCtrl", ['$scope', 'StudentListService', function ($scope, StudentListService) {
         $scope.orderByField = 'mark';
