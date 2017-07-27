@@ -45,31 +45,31 @@
                 
             </form>
             
-           
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th ng-click="orderByField='mark'; reverseSort = !reverseSort">
-                            Mark
-                            <span class="glyphicon glyphicon-triangle-bottom" ng-show="reverseSort"></span>
-                            <span class="glyphicon glyphicon-triangle-top" ng-show="!reverseSort"></span>
-                        </th>
-                        <th>Result</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="student in studentData |orderBy:orderByField:reverseSort">
-                        <td> {{student.name}}</td>
-                        <td> {{student.mark}}</td>
-                        <td> {{student.result}}</td>
-                        <td> <a href="#" ng-click="removeItem($index)"><span class="glyphicon glyphicon-trash" ></span></a></td>
+           <div class="set-margine">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th ng-click="orderByField='mark'; reverseSort = !reverseSort">
+                                Mark
+                                <span class="glyphicon glyphicon-triangle-bottom" ng-show="reverseSort"></span>
+                                <span class="glyphicon glyphicon-triangle-top" ng-show="!reverseSort"></span>
+                            </th>
+                            <th>Result</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="student in studentData |orderBy:orderByField:reverseSort">
+                            <td> {{student.name}}</td>
+                            <td> {{student.mark}}</td>
+                            <td> {{student.result}}</td>
+                            <td> <a href="#" ng-click="removeItem($index)"><span class="glyphicon glyphicon-trash" ></span></a></td>
 
-                    </tr>
-                </tbody>
-            </table>
-
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
         </div>
     </div>
 </body>
