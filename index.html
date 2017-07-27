@@ -143,6 +143,11 @@
                    searchObj.push($scope.studentData[i]);
                   console.log(searchObj);
                }
+                
+                if($scope.studentData.length == i){
+                    $scope.studentData = searchObj;
+                    console.log($scope.studentData);
+                }
             }
             
         }
