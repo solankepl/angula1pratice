@@ -133,12 +133,13 @@
             //$scope.studentData 
             for(var i = 0; i < $scope.studentData.length; i++){
                 //console.log($scope.studentData.length);
-                var nameSearch = $scope.studentData[i].name;
-                console.log( val + "====" + nameSearch +" ======="+ nameSearch.indexOf(val));
+                var nameSearch = $scope.studentData[i].name.toLowerCase();
+                var searchVal = val.toLowerCase()
+                //console.log( searchVal + "====" + nameSearch +" ======="+ nameSearch.indexOf(searchVal));
                 
-                 console.log( val + "====" + nameSearch +" ======="+ nameSearch.includes(val));
+                // console.log( searchVal + "====" + nameSearch +" ======="+ nameSearch.includes(searchVal));
                 
-               if(nameSearch.indexOf(val) !== -1){
+               if(nameSearch.indexOf(searchVal) !== -1){
                   console.log($scope.studentData.name);
                }
             }
