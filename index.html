@@ -68,7 +68,7 @@
                             <td ng-init="student.edit = false" > 
                                 <span ng-show="!student.edit"> {{student.name}} </span>
                                 <span>
-                                    <input ng-model="student.name" type="text">
+                                    <input  ng-if="student.edit" ng-model="student.name" type="text">
                                 </span>    
                             </td>
                             <td> 
