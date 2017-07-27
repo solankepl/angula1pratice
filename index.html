@@ -43,7 +43,7 @@
                 
                 <div class="set-margine-Top">
                     <label class="sr-only">Search:</label>
-                     <input class="form-control"  type="text" search> 
+                     <input class="form-control" placeholder="Search By Name"  type="text" search> 
                 </div>
                 
             </form>
@@ -132,9 +132,11 @@
         $scope.search= function(val) {
             //$scope.studentData 
             for(var i = 0; i < $scope.studentData.length; i++){
-                console.log($scope.studentData.length);
-                console.log($scope.studentData[i].name.indexOf(val));
-               if($scope.studentData[i].name.indexOf(val) !== -1){
+                //console.log($scope.studentData.length);
+                var nameSearch = $scope.studentData[i].name;
+                console.log( val + "====" + nameSearch.indexOf(val));
+                
+               if(nameSearch.indexOf(val) !== -1){
                   console.log($scope.studentData.name);
                }
             }
