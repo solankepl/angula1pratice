@@ -80,9 +80,8 @@
                             <td>
                                
                                 <span ng-show="!student.edit"> {{student.name}} {{student.result}} </span>
-                                <span>
-                                    <input  ng-if="student.edit" ng-model="student.mark" type="number">
-                                    <select ng-if="student.edit" ng-model="student.mark" ng-options="result for result in resultArray"></select>
+                                <span>                                   
+                                    <select ng-if="student.edit" ng-model="student.result" ng-options="result for result in resultArray"></select>
                                 </span> 
                             
                             </td>
