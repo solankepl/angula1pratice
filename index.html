@@ -39,7 +39,7 @@
                     <label class="sr-only">Mark:</label>
                     <input type="text" class="form-control" ng-model="markStudent">
                 </div>
-                <button class="btn btn-primary" ng-click="addItem()">Add</button>
+                <button class="btn btn-primary" ng-click="addStudent()">Add</button>
                 
                 <div class="set-margine-Top">
                     <label class="sr-only">Search:</label>
@@ -67,7 +67,7 @@
                             <td> {{student.name}}</td>
                             <td> {{student.mark}}</td>
                             <td> {{student.result}}</td>
-                            <td> <a href="#" ng-click="removeItem($index)"><span class="glyphicon glyphicon-trash" ></span></a></td>
+                            <td> <a href="#" ng-click="removeStudent($index)"><span class="glyphicon glyphicon-trash" ></span></a></td>
 
                         </tr>
                     </tbody>
@@ -105,13 +105,15 @@
 
         $scope.studentData;
 
-        StudentListService.getContactsList().success(function (data) {
-            $scope.studentData = data;
-            //console.log(data);
-        });
-
-
-        $scope.addItem = function () {
+        $scope.getStudentData = function () {
+            StudentListService.getContactsList().success(function (data) {
+                $scope.studentData = data;
+            });
+        }
+        
+        $scope.getStudentData();   
+        
+        $scope.addStudent = function () {
             var result = "fail"
             if ($scope.markStudent > 35)
                 result = "pass"
@@ -124,13 +126,14 @@
             };
             $scope.studentData.push($scope.newData);
         }
-        $scope.removeItem = function (x) {
+        $scope.removeStudent = function (x) {
             $scope.errortext = "";
             $scope.studentData.splice(x, 1);
         }
         
         $scope.search= function(val) {
             //$scope.studentData 
+            $scope.getStudentData();  
             var searchObj = [];
             for(var i = 0; i < $scope.studentData.length; i++){
                 //console.log($scope.studentData.length);
