@@ -146,7 +146,8 @@
                 
                 if($scope.studentData.length == i){
                     $scope.studentData = searchObj;
-                    console.log($scope.studentData);
+                    $scope.$apply();
+                    console.log("update list" + $scope.studentData);
                 }
             }
             
