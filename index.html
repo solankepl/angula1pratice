@@ -37,10 +37,10 @@
                     <input type="text" class="form-control" ng-model="markStudent">
                 </div>
                 <button class="btn btn-primary" ng-click="addItem()">Add</button>
+                <button class="btn btn-primary" ng-click="searchRecord()">Add</button>
             </form>
-
-
-            <p>{{errortext}}</p>
+            
+            <input type="text" search>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -77,8 +77,20 @@
             return $http.get('data.json');
         };
     });
+    
+    app.directive('search', function () {
+        return function ($scope, element) {
+            element.bind("keyup", function (event) {
+              var val = element.val();
+              if(val.length > 2) {
+                $scope.search(val);
+              }
+            });
+        };
+    });
 
-
+  
+       
     app.controller("myCtrl", ['$scope', 'StudentListService', function ($scope, StudentListService) {
         $scope.orderByField = 'mark';
         $scope.reverseSort = false;
@@ -108,6 +120,11 @@
             $scope.errortext = "";
             $scope.studentData.splice(x, 1);
         }
+        
+        $scope.search= function(val) {
+            cosnole.log("in");
+        }
+        
     }]);
 </script>
 
