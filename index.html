@@ -72,9 +72,20 @@
                                 </span>    
                             </td>
                             <td> 
-                                {{student.mark | setDecimal:2}}                                    
+                                <span ng-show="!student.edit"> {{student.name}}{{student.mark | setDecimal:2}}  </span>
+                                <span>
+                                    <input  ng-if="student.edit" ng-model="student.mark" type="number">
+                                </span> 
                             </td>
-                            <td> {{student.result}}</td>
+                            <td>
+                               
+                                <span ng-show="!student.edit"> {{student.name}} {{student.result}} </span>
+                                <span>
+                                    <input  ng-if="student.edit" ng-model="student.mark" type="number">
+                                    <select ng-if="student.edit" ng-model="student.mark" ng-options="result for result in resultArray"></select>
+                                </span> 
+                            
+                            </td>
                             <td> 
                                 <a href="#" ng-click="removeStudent($index)"><span class="glyphicon glyphicon-trash" ></span></a>
                                 <a href="#" ng-show="!student.edit" ng-click="student.edit =! student.edit"><span class="glyphicon glyphicon-pencil" ></span></a>
@@ -120,7 +131,7 @@
     app.controller("myCtrl", ['$scope', 'StudentListService', function ($scope, StudentListService) {
         $scope.orderByField = 'mark';
         $scope.reverseSort = false;
-
+        $scope.resultArray = ["Pass", "Fail"];
         $scope.studentData;
 
         $scope.getStudentData = function () {
