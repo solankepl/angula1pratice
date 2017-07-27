@@ -77,7 +77,9 @@
                             <td> {{student.result}}</td>
                             <td> 
                                 <a href="#" ng-click="removeStudent($index)"><span class="glyphicon glyphicon-trash" ></span></a>
-                                <a href="#" ng-click="student.edit =! student.edit"><span class="glyphicon glyphicon-pencil" ></span></a>
+                                <a href="#" ng-show="!student.edit" ng-click="student.edit =! student.edit"><span class="glyphicon glyphicon-pencil" ></span></a>
+                                <a href="#" ng-show="student.edit" ng-click="student.edit =! student.edit"><span class="glyphicon glyphicon-ok" ></span></a>
+                                
                             </td>
                         </tr>
                     </tbody>
