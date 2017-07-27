@@ -136,6 +136,8 @@
                 var nameSearch = $scope.studentData[i].name;
                 console.log( val + "====" + nameSearch +" ======="+ nameSearch.indexOf(val));
                 
+                 console.log( val + "====" + nameSearch +" ======="+ nameSearch.includes(val));
+                
                if(nameSearch.indexOf(val) !== -1){
                   console.log($scope.studentData.name);
                }
