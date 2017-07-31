@@ -8,13 +8,13 @@
     <title></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="">
-    <script src="js/lib/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />
+   
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     
-    
+     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/angular.js"></script>
-    <script src="//cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+    <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
    
 
     <style>
@@ -104,8 +104,7 @@
                 </table>
             </div> 
         </div>
-        <div class="gridStyle" ng-grid="gridOptions">
-        </div>                                                                                                                                       
+        <div class="gridStyle" ng-grid="gridOptions"></div>                                                                                                                                    
                                                                                                                                                
     </div>
 </body>
@@ -143,6 +142,16 @@
         $scope.reverseSort = false;
         $scope.resultArray = ["Pass", "Fail"];
         $scope.studentData;
+                                            
+                                            
+          //ui grid
+            $scope.myData = [{name: "Moroni", age: 50},
+                     {name: "Tiancum", age: 43},
+                     {name: "Jacob", age: 27},
+                     {name: "Nephi", age: 29},
+                     {name: "Enos", age: 34}];
+            $scope.gridOptions = { data: 'myData' };                                        
+                                            
 
         $scope.getStudentData = function () {
             StudentListService.getContactsList().success(function (data) {
@@ -202,13 +211,7 @@
                     console.log("update list" + $scope.studentData);
                 }
             }
-            //ui grid
-            $scope.myData = [{name: "Moroni", age: 50},
-                     {name: "Tiancum", age: 43},
-                     {name: "Jacob", age: 27},
-                     {name: "Nephi", age: 29},
-                     {name: "Enos", age: 34}];
-            $scope.gridOptions = { data: 'myData' };                                   
+                                         
                                              
             
         }
