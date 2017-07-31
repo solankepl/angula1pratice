@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title></title>
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+     <!-- <link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />-->
    
    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     
@@ -103,13 +103,13 @@
                 </table>
             </div> 
         </div>
-        <div class="gridStyle" ng-grid="gridOptions"></div>                                                                                                                                    
+                                                                                                                                 
                                                                                                                                                
     </div>
 </body>
 
 <script>
-    var app = angular.module("myShoppingList", ['ngGrid']);
+    var app = angular.module("myShoppingList", []);
 
     app.service('StudentListService', function ($http) {
         this.getContactsList = function () {
