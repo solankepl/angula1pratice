@@ -48,8 +48,15 @@
             rownumbers: true,
             sortname: "invdate",
             sortorder: "desc",
-            caption: "The grid, which uses predefined formatters and templates"
+            caption: "The grid, which uses predefined formatters and templates",
+             rownumbers: true,
+            autoencode: true,
         });
+        $(window).on("resize", function () {
+            var newWidth = $("#grid1b").closest(".ui-jqgrid").parent().width();
+            applicationGrid.jqGrid("setGridWidth", newWidth, true);
+        });
+           
     });
     //]]>
     </script>
